@@ -12,6 +12,6 @@ app.use(express.static(__dirname));
 
 //add the router
 app.use('/', router);
-app.listen(process.env.port || 80);
+app.listen(process.env.PORT || 80);
 
 console.log('Running at Port 80');
