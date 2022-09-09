@@ -3,12 +3,18 @@ const app = express();
 const path = require('path');
 const router = express.Router();
 
+app.use(express.static(__dirname));
+
+app.get("*", function(request, response){
+
+  response.redirect("https://" + request.headers.host + request.url);
+
+});
+
 router.get('/',function(req,res){
   res.sendFile(path.join(__dirname+'/index.html'));
   //__dirname : It will resolve to your project folder.
 });
-
-app.use(express.static(__dirname));
 
 //add the router
 app.use('/', router);
